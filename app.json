@@ -41,8 +41,7 @@
           }
         }
       ],
-      "@config-plugins/react-native-blob-util",
-      "@config-plugins/react-native-pdf"
+      "expo-document-picker"
     ],
     "experiments": {
       "typedRoutes": true,
