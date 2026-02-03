@@ -3,9 +3,12 @@ import { useState } from "react";
 import { Button, Text, View } from "react-native";
 
 export default function Index() {
-  const [fileUri, setFileUri] = useState<String | null>(null);
+  const [fileUri, setFileUri] = useState<string | null>(null);
   const handlePick = async () => {
-    const res = await DocumnetPicker.getDocumentAsync({});
+    const res = await DocumnetPicker.getDocumentAsync({
+      copyToCacheDirectory: true, //to save in app's cache directory
+      type: "application/pdf",
+    });
     if (!res.canceled) {
       //@ts-ignore
       await setFileUri(res.uri);
