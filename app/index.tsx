@@ -10,8 +10,7 @@ export default function Index() {
       type: "application/pdf",
     });
     if (!res.canceled) {
-      //@ts-ignore
-      await setFileUri(res.uri);
+      await setFileUri(res.assets[0].uri);
       console.log(fileUri);
     } else {
       console.log("document selection cancled!");
