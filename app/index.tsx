@@ -1,22 +1,21 @@
 import * as DocumnetPicker from "expo-document-picker";
 import { useState } from "react";
 import { Button, Text, View } from "react-native";
+import PDF from "react-native-pdf";
 
 export default function Index() {
-  const [fileUri, setFileUri] = useState<string | null>(null);
+  const [fileUri, setFileUri] = useState<String | null>(null);
   const handlePick = async () => {
-    const res = await DocumnetPicker.getDocumentAsync({
-      copyToCacheDirectory: true, //to save in app's cache directory
-      type: "application/pdf",
-    });
+    const res = await DocumnetPicker.getDocumentAsync({});
     if (!res.canceled) {
-      await setFileUri(res.assets[0].uri);
+      //@ts-ignore
+      await setFileUri(res.uri);
       console.log(fileUri);
     } else {
       console.log("document selection cancled!");
     }
   };
-  if (!fileUri) {
+  if (fileUri == "") {
     return (
       <View
         style={{
